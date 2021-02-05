@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div{
+    border: 1px solid black;
+}
+​
+#inner {
+  border-radius: 1px;
+  background: yellow;
+  width: 80px;
+  height: 80px;
+  opacity:.52;
+  margin: 9px;
+  text-align: center;
+  justify-content: middle;
+}
+​
+#outer {
+  border-radius: 100px;
+  background: pink;
+  width: 200px;
+  height: 100px;
+  margin: 5px;
+}
+#canvas {
+  background: yellow;
+  width: 500px;
+  height: 500px;
+  opacity:.52;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+</style>
+<script>
+window.onload = function(){
+  setInterval(move, 10);
+  
+  function move(){
+    let inner = document.getElementById('inner');
+    let oldvalue = inner.style.marginTop;
+    let newvalue;
+    if(oldvalue){
+      //console.log('oldvalue---' + ma);
+      newvalue = parseInt(oldvalue.substr(0, oldvalue.indexOf('px'))) + 1;
+      if(newvalue > 300) newvalue = 10;
+    }
+    else{
+      newvalue = 10;
+    }
+    inner.style.marginTop = newvalue + 'px';
+  }
+}
+</script>
+</head>
+<body>
+  <div id="canvas">
+    <div id="outer">
+        <div id="inner">☯<br/>☯<br/>☯</div>
+    </div>
+  </div>
+</body>
+</html>
