@@ -1,0 +1,105 @@
+<html>
+<head>
+<style> 
+div{
+    border: 1px solid black;
+}
+#inner {
+  border-radius: 80px;
+  background: red;
+  width: 80px;
+  height: 80px;
+  opacity:.2;
+  margin: 9px;
+  text-align: center;
+  justify-content: center;
+}
+
+.reset{
+    transform: rotate(0degree);
+}
+.rotated30{
+    transform: rotate(30degree);
+}
+.rotated60{
+    transform: rotate(60degree);
+}
+.rotated90{
+    transform: rotate(90degree);
+}
+#outer {
+  border-radius: 100px;
+  background: pink;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+#canvas {
+  background: yellow;
+  width: 400px;
+  height: 700px;
+  opacity:.52;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+</style>
+<script>
+window.onload = function(){
+    setInterval(move, 1000);
+    var max = 600;
+    var minm = 10;
+    function move(){
+        let inner = document.getElementsByClassName('inner');
+        //console.log('hi');
+        for(let j = 0; j<inner.length; j++){
+            let i = inner[j];
+            //console.log('-->' + JSON.stringify(i));
+            //console.log('i.label->' + i.label);
+            if(i.label == 'B1'){
+                let oldvalue = i.style.marginTop;
+                let newvalue;
+                if(oldvalue){
+                    newvalue = parseInt(oldvalue.substr(0, oldvalue.indexOf('px'))) + 1;
+                    //animate(inner, newvalue);
+                }
+                else{
+                    newvalue = minm;
+                }
+                i.style.marginTop = newvalue + 'px';
+                i.style.opacity = newvalue/max;
+            }
+        }
+    }
+
+    //animate method
+    function animate(inner, newvalue){
+        if(newvalue == max/4){
+            inner.classList.add('rotated30');
+            inner.classList.remove('rotated90');
+        }
+        else if(newvalue == max/2){
+            inner.classList.add('rotated30');
+            inner.classList.remove('rotated60');
+        }
+        else if(newvalue == max*3/2){
+            inner.classList.add('rotated90');
+            inner.classList.remove('rotated60');
+        }
+        else if (newvalue == max){
+            newvalue = minm;
+            //inner.classList.add('reset');
+        }
+    }
+}
+</script>
+</head>
+<body>
+  <div id="canvas">
+    <div id="outer">
+        <span><div class="inner" label="B1">☯<br/>☯<br/>☯<br/>☯</div></span>
+        <span><div class="inner" label="B2">☯<br/>☯<br/>☯<br/>☯</div></span>
+        <span><div class="inner" label="B3">☯<br/>☯<br/>☯<br/>☯</div></span>
+    </div>
+  </div>
+  </body>
+  </html>
