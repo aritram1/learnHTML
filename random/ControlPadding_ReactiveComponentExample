@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{
+	padding: 4px;
+}
+body{
+	border: 1px solid red;
+    height: 200px;
+    width: auto;
+}
+.container{
+	border: 1px solid blue;
+}
+
+.fl{float:left}
+.fr{float:right}
+.cb{clear:both}
+.percentage{
+	margin-right: 2px;
+    margin-left: 2px;
+}
+</style>
+  <script>
+      function handleChange(v){
+          let c = document.
+          getElementById('container').
+          children;
+          for(let each of c){
+              each.style.padding = v+'px';
+          }
+
+      }
+  </script>
+</head>
+<body id="body">
+  Adjust padding <input type="number" 
+         min=2 max=30 
+         class="percentage" 
+         value=4 
+         onchange="handleChange(this.value)"/> px
+
+  <div id="container">
+  	<div>In simplest use,the float property used to wrap text 
+    	arnd images
+    </div>
+  	<div class="">First Para is something that starts with first yes 
+    	yes first!
+    </div>
+    <div class="">Second Para is just nor first para. 
+    	The best thing about it is that its is a second para.
+    </div>
+  <div class="">
+  	<strong>Third Para is completely king when first or second para is 
+    not there. Else the para is total joy
+    </strong>
+  </div>
+ </div>
+<div class=""><strong>4th Para is completely king when first or second para is not there. Else the para is total joy</strong></div>
+  </div>
+</body>
+</html>
